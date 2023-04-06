@@ -11,7 +11,12 @@ class UserViewSets(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
+
 class ProfileViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = ProfileSerializer
-    queryset = Profile.objects.all()
+
+    def get_queryset(self):
+        user = self.request.user
+        queryset = Profile.objects.filter(user=user)
+        return queryset
