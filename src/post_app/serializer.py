@@ -21,8 +21,10 @@ class PostSerializer(serializers.Serializer):
     level = serializers.ChoiceField(choices=LEVEL_CHOICES, default='n5')
     create_at = serializers.DateTimeField(read_only=True)
     update_at = serializers.DateTimeField(read_only=True)
-    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    user = serializers.ReadOnlyField(source='user.username')
 
     def create(self, validated_data):
+        request = self.context['request']
+        validated_data['user'] = request.user
         post = Post.objects.create(**validated_data)
         return post
