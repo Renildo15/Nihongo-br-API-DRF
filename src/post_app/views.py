@@ -5,11 +5,11 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 class PostList(APIView):
 
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         return Post.objects.all()
@@ -24,7 +24,9 @@ class PostList(APIView):
         serializer = PostSerializer(data=request.data)
 
         if serializer.is_valid():
-            serializer.save()
+            post_serializer = serializer.save(commit=False)
+            post_serializer.user = request.user
+            post_serializer.save()
             return Response(serializer.data,status = status.HTTP_201_CREATED)
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
