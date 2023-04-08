@@ -7,6 +7,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ['url', 'first_name','last_name', 'username','email','password']
+        view_name = 'user-detail' 
 
     def create(self, validated_data):
         user = User.objects.create(
