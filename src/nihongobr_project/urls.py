@@ -4,9 +4,10 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-
+from phrase_app.views import PhraseViewSet
 from user_app.views import UserViewSets, ProfileViewSet
 from rest_framework.routers import DefaultRouter
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -19,5 +20,6 @@ urlpatterns = [
 router = DefaultRouter()
 router.register('user', UserViewSets, basename='user')
 router.register('profile', ProfileViewSet, basename='profile')
+router.register('phrases', PhraseViewSet, basename="phrases")
 
 urlpatterns += router.urls
