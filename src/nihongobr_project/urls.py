@@ -5,6 +5,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 from user_app.views import UserViewSets, ProfileViewSet
+from phrase_app.views import PhraseViewSet
 from post_app.views import PostViewSet
 from rest_framework.routers import DefaultRouter
 
@@ -20,5 +21,6 @@ router = DefaultRouter()
 router.register('user', UserViewSets, basename='user')
 router.register('profile', ProfileViewSet, basename='profile')
 router.register('post', PostViewSet, basename='post')
+router.register('phrase', PhraseViewSet, basename='phrase')
 
 urlpatterns += router.urls
