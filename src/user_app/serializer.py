@@ -33,7 +33,11 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         return user
     
 class ProfileSerializer(serializers.HyperlinkedModelSerializer):
-
+    phrases = serializers.HyperlinkedRelatedField(
+        many=True,
+        read_only=True,
+        view_name='profile-phrases'
+    )
     class Meta:
         model = Profile
-        fields = ['url', 'user', 'bio', 'profile_photo', 'date_of_birth']
+        fields = ['url', 'user', 'bio', 'profile_photo', 'date_of_birth','phrases']
