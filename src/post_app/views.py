@@ -12,7 +12,7 @@ class PostList(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
-        return Post.objects.all()
+        return Post.objects.all().order_by('-create_at')
     
 
     def get(self, request, format=None):
