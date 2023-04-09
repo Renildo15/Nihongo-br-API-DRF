@@ -10,11 +10,13 @@ class UserViewSets(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializer
     queryset = User.objects.all()
+    
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = ProfileSerializer
+
 
     def get_queryset(self):
         user = self.request.user
