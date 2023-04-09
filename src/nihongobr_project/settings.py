@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'user_app',
     'post_app',
     'phrase_app',
+    'note_app',
 ]
 
 REST_FRAMEWORK = {

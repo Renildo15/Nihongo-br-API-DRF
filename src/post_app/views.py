@@ -9,5 +9,6 @@ class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all().order_by('-create_at')
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+    
 
 
