@@ -16,7 +16,6 @@ class Post(models.Model):
     id_post = models.UUIDField(primary_key=True, editable=False, default=uuid4)
     grammar = models.CharField(max_length=250)
     connection = models.CharField(max_length=250)
-    note = models.TextField(blank=True, null=True)
     level = models.CharField(max_length=250, choices=LEVEL_CHOICES, default='n5')
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)

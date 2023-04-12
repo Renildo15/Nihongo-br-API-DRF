@@ -16,7 +16,7 @@ router.register('profile', ProfileViewSet, basename='profile')
 router.register('post', PostViewSet, basename='post')
 router.register('phrase', PhraseViewSet, basename='phrase')
 router.register('note', NoteViewSet, basename='note')
-
+''
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +24,7 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/v1/', include(router.urls)),
-    path('api/v1/post/<str:pk>/phrase_list/', PostViewSet.as_view({'get': 'phrase_list'}), name='post-phrase-list')
+    path('api/v1/post/<str:pk>/phrase_list/', PostViewSet.as_view({'get': 'phrase_list'}), name='post-phrase-list'),
+    path('api/v1/post/<str:pk>/note_list/',PostViewSet.as_view({'get': 'note_list'}), name='post-note-list' )
 ]
 
