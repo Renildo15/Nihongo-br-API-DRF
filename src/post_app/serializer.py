@@ -5,7 +5,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
     user = serializers.StringRelatedField()
     class Meta:
         model = Post
-        fields = ['url', 'grammar', 'connection', 'note', 'level', 'create_at', 'update_at', 'user']
+        fields = ['url', 'grammar', 'connection', 'level', 'create_at', 'update_at', 'user']
 
     def create(self, validated_data):
         request = self.context['request']
