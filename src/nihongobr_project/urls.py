@@ -25,6 +25,7 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/v1/', include(router.urls)),
     path('api/v1/post/<str:pk>/phrase_list/', PostViewSet.as_view({'get': 'phrase_list'}), name='post-phrase-list'),
-    path('api/v1/post/<str:pk>/note_list/',PostViewSet.as_view({'get': 'note_list'}), name='post-note-list' )
+    path('api/v1/post/<str:pk>/note_list/',PostViewSet.as_view({'get': 'note_list'}), name='post-note-list' ),
+    path('api/v1/profile/<str:pk>/post_list/',ProfileViewSet.as_view({'get': 'post_list'}), name='post-list' ),
 ]
 
